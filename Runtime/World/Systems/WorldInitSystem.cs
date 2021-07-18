@@ -9,10 +9,6 @@ namespace Voody.UniLeo
     /// <summary>
     /// This class handle global init to ECS World
     /// <summary>
-#if ENABLE_IL2CPP
-    [Unity.IL2CPP.CompilerServices.Il2CppSetOption (Unity.IL2CPP.CompilerServices.Option.NullChecks, false)]
-    [Unity.IL2CPP.CompilerServices.Il2CppSetOption (Unity.IL2CPP.CompilerServices.Option.ArrayBoundsChecks, false)]
-#endif
     class WorldInitSystem : IEcsPreInitSystem, IEcsRunSystem, IEcsDestroySystem
     {
         EcsWorld _world = null;
@@ -84,21 +80,3 @@ namespace Voody.UniLeo
         }
     }
 }
-
-#if ENABLE_IL2CPP
-// Unity IL2CPP performance optimization attribute.
-namespace Unity.IL2CPP.CompilerServices {
-    enum Option {
-        NullChecks = 1,
-        ArrayBoundsChecks = 2
-    }
-
-    [AttributeUsage (AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property, Inherited = false, AllowMultiple = true)]
-    class Il2CppSetOptionAttribute : Attribute {
-        public Option Option { get; private set; }
-        public object Value { get; private set; }
-
-        public Il2CppSetOptionAttribute (Option option, object value) { Option = option; Value = value; }
-    }
-}
-#endif
